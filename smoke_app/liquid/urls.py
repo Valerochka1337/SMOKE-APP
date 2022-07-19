@@ -1,8 +1,8 @@
-from .api import NewsViewSet
+from .api import LiquidViewSet
 from rest_framework import routers
 from django.urls import path
 from .views import *
 
 router = routers.DefaultRouter()
-router.register('api/news', NewsViewSet, 'news')
+router.register('api/liquid', LiquidViewSet, 'liquid')
 urlpatterns = router.urls

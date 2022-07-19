@@ -18,13 +18,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
-from news.views import index
+from rest_framework import routers
+from liquid.views import *
+
+
+router = routers.SimpleRouter()
+router.register(r'liquid', LiquidViewSet)
 
 
 urlpatterns = [
-    path('api/v1/drf-auth/', include('rest_framework.urls')),
+    path('api/v1/', include(router.urls)),
     path('api/v1/auth/', include('djoser.urls')),
     path('admin/', admin.site.urls),
-    path('', include('news.urls')),
+    path('', include('liquid.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken'))
 ]
